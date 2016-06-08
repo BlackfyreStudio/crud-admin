@@ -1,7 +1,6 @@
 $icon-font-path: '../fonts/';
 
 @at-root {
-  // Import the fonts
   @font-face {
     font-family: 'Ubuntu';
     src: url('/fonts/ubuntu-regular-webfont.eot');
@@ -15,16 +14,23 @@ $icon-font-path: '../fonts/';
   }
 }
 
-$font-family-sans-serif:  'Ubuntu', sans-serif;
-$font-family-serif:       Georgia, "Times New Roman", Times, serif;
-//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+$footer-height: 40px;
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "bower_components/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss";
 @import "bower_components/font-awesome/scss/font-awesome.scss";
 @import "bower_components/sweetalert/dev/sweetalert.scss";
+@import "bower_components/select2/src/scss/core.scss";
+@import "bower_components/select2-bootstrap-theme/src/select2-bootstrap.scss";
 // endbower
 
 html {
@@ -41,17 +47,42 @@ html {
 
 body {
   padding-top: 50px;
-  margin-bottom: 60px;
+  margin-bottom: $footer-height;
+  padding-bottom: 30px;
+
+  .user-image {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
 
   > .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: $footer-height;
+    background-color: #f5f5f5;
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }
 
+.editor-toolbar.fullscreen {
+  top: 50px !important;
+}
+
+.CodeMirror-fullscreen {
+  top: 100px !important;
+  bottom: $footer-height !important;
+}
+
+.editor-preview-side {
+  top: 100px !important;
+  bottom: $footer-height !important;
+}
 
 

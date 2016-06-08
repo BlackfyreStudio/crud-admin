@@ -17,11 +17,16 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
+    .pipe($.uncss({
+      html: ['app/*.html'],
+      ignore: [/ball-fall/i, /open/i,/CodeMirror/i,/editor-/i,/sweet-/i,/bootstrap-datetimepicker-widget/i,/\.fa/i,/select2/i]
+    }))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
+
 
 gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js')

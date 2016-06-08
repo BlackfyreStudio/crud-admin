@@ -29,40 +29,52 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Project name</a>
+        <a class="navbar-brand" href="/">CRUD</a>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
+      <div id="navbar-primary" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/ui-kit.html">UI Kit</a></li>
+          <li><a href="/form-special.html">Form elements</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">REST <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/crud-index.html">Index</a></li>
+              <li><a href="/crud-form.html">Form</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="user-image" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?s=18" />User name <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/pwd-change.html">Change password</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/login.html"><i class="fa fa-fw fa-warning"></i> Logout</a></li>
+            </ul>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
 
-  <div class="container">
 
-    <div class="starter-template">
-      <h1>Bootstrap starter template</h1>
-      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
 
-  </div><!-- /.container -->
 
   <footer class="footer">
     <div class="container">
-      &copy; BlackFyre Studio 2016
+      <p>&copy; BlackFyre Studio 2016</p>
     </div>
   </footer>
 
-    <!-- build:js scripts/vendor.js -->
+  <!-- build:js scripts/package.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
@@ -72,10 +84,11 @@
     <script src="/bower_components/sweetalert/dist/sweetalert-dev.js"></script>
     <script src="/bower_components/bootbox.js/bootbox.js"></script>
     <script src="/bower_components/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
+    <script src="/bower_components/select2/dist/js/select2.full.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
 
-    <!-- build:js scripts/plugins.js -->
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
@@ -88,9 +101,7 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>
