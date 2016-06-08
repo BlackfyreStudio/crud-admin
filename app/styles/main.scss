@@ -85,4 +85,10 @@ body {
   bottom: $footer-height !important;
 }
 
+.table tbody>tr>td {
+  vertical-align: middle;
+}
 
+.pagination {
+  margin: 0;
+}
