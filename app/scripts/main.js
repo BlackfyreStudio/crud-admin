@@ -91,13 +91,13 @@
       $deleteButton.button('loading');
 
       swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this imaginary file!',
+        type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel plx!",
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel plx!',
         closeOnConfirm: false,
         closeOnCancel: true
       }, function (isConfirm) {
@@ -106,7 +106,7 @@
             $(element).closest('tr').remove();
           });
 
-          swal("Deleted!", "Your imaginary file has been deleted.", "success");
+          swal('Deleted!', 'Your imaginary file has been deleted.', 'success');
           $deleteButton.button('reset');
 
           setTimeout(()=> {

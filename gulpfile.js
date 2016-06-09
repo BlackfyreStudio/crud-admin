@@ -17,6 +17,9 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
+    .pipe($.stripCssComments({
+      preserve: false
+    }))
     .pipe($.uncss({
       html: ['app/*.html'],
       ignore: [/ball-fall/i, /open/i,/CodeMirror/i,/editor-/i,/sweet-/i,/bootstrap-datetimepicker-widget/i,/\.fa/i,/select2/i]
