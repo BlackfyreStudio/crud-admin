@@ -9,25 +9,54 @@
 })();
 
 (()=> {
+
+  let defaults = {
+    icons: {
+      time: 'fa fa-clock-o',
+      date: 'fa fa-calendar',
+      up: 'fa fa-arrow-up',
+      down: 'fa fa-arrow-down',
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      today: 'fa fa-crosshairs',
+      clear: 'fa fa-trash',
+      close: 'fa fa-remove'
+    }
+  };
+
   $('[data-provide=datepicker]').each((index, element) => {
     let $this = $(element);
 
-    let defaults = {
-      icons: {
-        time: 'fa fa-clock-o',
-        date: 'fa fa-calendar',
-        up: 'fa fa-arrow-up',
-        down: 'fa fa-arrow-down',
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-crosshairs',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-      }
-    };
-
     $this.datetimepicker(_.extend(defaults, _.omit($this.data(), 'provide')));
-  })
+  });
+
+
+  $('[data-provide=date-range]').each((index, element)=>{
+
+    let $this = $(element);
+
+    $this.datetimepicker(_.extend(defaults, _.omit($this.data(), ['provide','counterpart','range'])));
+
+    $this.on('dp.change',(event)=>{
+
+      let counterpart = $($this.data('counterpart'));
+
+      switch($this.data('range')) {
+        case 'start':
+          counterpart.data('DateTimePicker').minDate(event.date);
+              break;
+        case 'end':
+          counterpart.data('DateTimePicker').maxDate(event.date);
+              break;
+        default:
+          console.error('invalid date range option');
+          break;
+      }
+
+    });
+
+  });
+
 })();
 
 (() => {
@@ -48,7 +77,20 @@
 
     let $this = $(element);
 
-    $this.select2();
+    $this.select2({
+      theme: 'bootstrap'
+    });
+
+  });
+
+  $('select[data-provide=tags]').each((index, element) => {
+
+    let $this = $(element);
+
+    $this.select2({
+      theme: 'bootstrap',
+      tags: true
+    });
 
   });
 
