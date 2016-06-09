@@ -22,7 +22,21 @@ gulp.task('styles', () => {
     }))
     .pipe($.uncss({
       html: ['app/*.html'],
-      ignore: [/ball-fall/i, /open/i,/CodeMirror/i,/editor-/i,/sweet-/i,/bootstrap-datetimepicker-widget/i,/\.fa/i,/select2/i,/\.modal/i]
+      ignore: [
+        /ball-fall/i,
+        /open/i,
+        /CodeMirror/i,
+        /editor-/i,
+        /sweet-/i,
+        /bootstrap-datetimepicker-widget/i,
+        /\.fa/i,
+        /select2/i,
+        /\.modal/i,
+        /\.col-/i,
+        /disabled/i,
+        /\.active/,
+        /\.pagination/
+      ]
     }))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
@@ -87,7 +101,8 @@ gulp.task('images', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
+  return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {
+  })
     .concat('app/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'));
