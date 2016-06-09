@@ -58,20 +58,24 @@
 
 (()=> {
 
+  let chekForMarkedRows = () => {
+    return ($('body').find('.deleter:checked').length > 0);
+  };
+
   let $deleteButton = $('.btn-deleter');
-  $deleteButton.attr('disabled', true);
+  $deleteButton.prop('disabled', true);
 
   $('.deleter').off('click').on('click', (event)=> {
     let $this = $(event.currentTarget);
 
     if ($this.is(':checked')) {
-      $deleteButton.removeAttr('disabled');
+      $deleteButton.removeClass('disabled').prop('disabled', false);
     } else {
 
-      if ($('.deleter:checked').length > 0) {
+      if (chekForMarkedRows()) {
         $deleteButton.removeAttr('disabled');
       } else {
-        $deleteButton.attr('disabled', true);
+        $deleteButton.addClass('disabled').prop('disabled', true);
       }
 
     }
@@ -80,7 +84,11 @@
 
   $deleteButton.off('click').on('click', ()=> {
 
-    if (!$deleteButton.hasAttribute('disabled')) {
+    let disabled = $deleteButton.attr('disabled');
+
+    if (!(typeof disabled !== typeof undefined && disabled !== false)) {
+
+      $deleteButton.button('loading');
 
       swal({
         title: "Are you sure?",
@@ -89,9 +97,24 @@
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-      }, function () {
-        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+      }, function (isConfirm) {
+        if (isConfirm) {
+          $('.deleter:checked').each((index, element)=> {
+            $(element).closest('tr').remove();
+          });
+
+          swal("Deleted!", "Your imaginary file has been deleted.", "success");
+          $deleteButton.button('reset');
+
+          setTimeout(()=> {
+            $deleteButton.addClass('disabled').prop('disabled', true);
+          }, 0);
+        } else {
+          $deleteButton.button('reset');
+        }
       });
 
     }
