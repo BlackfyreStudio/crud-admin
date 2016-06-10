@@ -122,6 +122,8 @@
         <strong>Oh snap!</strong> <a href=# class=alert-link>Change a few things up</a> and try submitting again.
       </div>
 
+      <form id="destroyer" action="/its-magic">
+
       <div class="table-responsive">
         <table class="table table-hover table-condensed">
           <thead>
@@ -139,7 +141,7 @@
             <td>
               <div class="checkbox">
                 <label>
-                  <input class="deleter" type="checkbox">
+                  <input class="deleter" type="checkbox" name="delete[]" value="1">
                 </label>
               </div>
             </td>
@@ -157,7 +159,7 @@
             <td>
               <div class="checkbox">
                 <label>
-                  <input class="deleter" type="checkbox">
+                  <input class="deleter" type="checkbox" name="delete[]" value="2">
                 </label>
               </div>
             </td>
@@ -185,6 +187,7 @@
 
         </table>
       </div>
+      </form>
 
       <div class="row">
         <div class="col-sm-6">
@@ -271,6 +274,7 @@
 <script src="/bower_components/underscore/underscore.js"></script>
 <script src="/bower_components/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
 <script src="/bower_components/select2/dist/js/select2.full.js"></script>
+<script src="/bower_components/magnific-popup/dist/jquery.magnific-popup.js"></script>
 <!-- endbower -->
 
 <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>

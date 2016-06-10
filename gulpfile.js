@@ -35,7 +35,10 @@ gulp.task('styles', () => {
         /\.col-/i,
         /disabled/i,
         /\.active/,
-        /\.pagination/
+        /\.pagination/,
+        /\.crud/i,
+        /\.mfp-/i,
+        /\.date/i
       ]
     }))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))

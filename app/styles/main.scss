@@ -31,6 +31,7 @@ $footer-height: 40px;
 @import "bower_components/sweetalert/dev/sweetalert.scss";
 @import "bower_components/select2/src/scss/core.scss";
 @import "bower_components/select2-bootstrap-theme/src/select2-bootstrap.scss";
+@import "bower_components/magnific-popup/src/css/main.scss";
 // endbower
 
 html {
@@ -99,5 +100,45 @@ body {
   h2 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+
+.breadcrumb-container {
+  background-color: $breadcrumb-bg;
+  margin-bottom: 20px;
+
+  ol.breadcrumb {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.crud-form {
+  padding-top: 30px;
+}
+
+.mfp-with-zoom {
+  .mfp-container, &.mfp-bg {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    /* ideally, transition speed should match zoom duration */
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
+  &.mfp-ready {
+    .mfp-container {
+      opacity: 1;
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+  &.mfp-removing {
+    .mfp-container, &.mfp-bg {
+      opacity: 0;
+    }
   }
 }

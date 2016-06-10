@@ -21,7 +21,8 @@
       today: 'fa fa-crosshairs',
       clear: 'fa fa-trash',
       close: 'fa fa-remove'
-    }
+    },
+    sideBySide: true
   };
 
   $('[data-provide=datepicker]').each((index, element) => {
@@ -31,23 +32,23 @@
   });
 
 
-  $('[data-provide=date-range]').each((index, element)=>{
+  $('[data-provide=date-range]').each((index, element)=> {
 
     let $this = $(element);
 
-    $this.datetimepicker(_.extend(defaults, _.omit($this.data(), ['provide','counterpart','range'])));
+    $this.datetimepicker(_.extend(defaults, _.omit($this.data(), ['provide', 'counterpart', 'range'])));
 
-    $this.on('dp.change',(event)=>{
+    $this.on('dp.change', (event)=> {
 
       let counterpart = $($this.data('counterpart'));
 
-      switch($this.data('range')) {
+      switch ($this.data('range')) {
         case 'start':
           counterpart.data('DateTimePicker').minDate(event.date);
-              break;
+          break;
         case 'end':
           counterpart.data('DateTimePicker').maxDate(event.date);
-              break;
+          break;
         default:
           console.error('invalid date range option');
           break;
@@ -104,10 +105,11 @@
     return ($('body').find('.deleter:checked').length > 0);
   };
 
-  let $deleteButton = $('.btn-deleter');
-  $deleteButton.prop('disabled', true);
+  let $form = $('form#destroyer');
+  let $deleteButton = $('button.btn-deleter');
+  $deleteButton.prop('disabled', chekForMarkedRows());
 
-  $('.deleter').off('click').on('click', (event)=> {
+  $('input.deleter').off('click').on('click', (event)=> {
     let $this = $(event.currentTarget);
 
     if ($this.is(':checked')) {
@@ -124,7 +126,9 @@
 
   });
 
-  $deleteButton.off('click').on('click', ()=> {
+  $deleteButton.off('click').on('click', (event)=> {
+
+    event.preventDefault();
 
     let disabled = $deleteButton.attr('disabled');
 
@@ -134,32 +138,107 @@
 
       swal({
         title: 'Are you sure?',
-        text: 'You will not be able to recover this imaginary file!',
+        text: 'You will not be able to recover any of the deleted items!',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#DD6B55',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel plx!',
+        confirmButtonText: 'Yes!',
+        cancelButtonText: 'Cancel!',
         closeOnConfirm: false,
-        closeOnCancel: true
+        closeOnCancel: true,
+        showLoaderOnConfirm: true
       }, function (isConfirm) {
-        if (isConfirm) {
-          $('.deleter:checked').each((index, element)=> {
-            $(element).closest('tr').remove();
-          });
 
-          swal('Deleted!', 'Your imaginary file has been deleted.', 'success');
+        if (isConfirm) {
+
+          $form.trigger('submit');
+
+        } else {
+          $deleteButton.button('reset');
+        }
+
+      });
+
+    }
+
+  });
+
+  $form.off('submit').on('submit', (event)=> {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'post',
+      data: $form.serialize(),
+      url: $form.attr('action')
+    })
+      .done((reply)=> {
+
+      $('.deleter:checked').each((index, element)=> {
+        $(element).closest('tr').remove();
+      });
+
+      if ('result' in reply) {
+
+        if (reply.result) {
+          swal('Deleted!', 'Your items have been deleted.', 'success');
           $deleteButton.button('reset');
 
           setTimeout(()=> {
             $deleteButton.addClass('disabled').prop('disabled', true);
           }, 0);
+
         } else {
-          $deleteButton.button('reset');
+
+          swal('Fail!', 'Something went wrong...', 'error');
+
+        }
+
+      } else {
+
+        swal('Fail!', 'Something went wrong...', 'error');
+
+      }
+
+    })
+      .fail(()=> {
+        swal('Fail!', 'Something went wrong...', 'error');
+      });
+
+  });
+
+})();
+
+
+/* Gallery */
+(()=> {
+
+  $('[data-provide=gallery]').each((index, element)=> {
+
+    let $button = $(element);
+
+    $button.on('click', (event)=> {
+
+      event.preventDefault();
+
+      let $targetGallery = $('body').find($button.data('target'));
+
+      $targetGallery.magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'Loading image #%curr%...',
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        gallery: {
+          enabled: true,
+          navigateByImgClick: true,
+          preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+          verticalFit: true
         }
       });
 
-    }
+      $targetGallery.find('a').first().trigger('click');
+
+    });
 
   });
 
