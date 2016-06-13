@@ -107,7 +107,7 @@
 
   let $form = $('form#destroyer');
   let $deleteButton = $('button.btn-deleter');
-  $deleteButton.prop('disabled', chekForMarkedRows());
+  $deleteButton.prop('disabled', !chekForMarkedRows());
 
   $('input.deleter').off('click').on('click', (event)=> {
     let $this = $(event.currentTarget);
