@@ -15,7 +15,8 @@
     "select2": "^4.0.3",
     "select2-bootstrap-theme": "^0.1.0-beta.7",
     "magnific-popup": "^1.1.0",
-    "blueimp-md5": "^2.3.0"
+    "blueimp-md5": "^2.3.0",
+    "bootstrap-toggle": "^2.2.2"
   },
   "overrides": {
     "bootstrap-sass": {
@@ -87,6 +88,12 @@
       "main": [
         "dist/jquery.magnific-popup.js",
         "src/css/main.scss"
+      ]
+    },
+    "bootstrap-toggle": {
+      "main": [
+        "css/bootstrap-toggle.css",
+        "js/bootstrap-toggle.js"
       ]
     }
   },

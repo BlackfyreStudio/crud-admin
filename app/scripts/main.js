@@ -244,4 +244,14 @@
 
 })();
 
+(()=>{
+
+  $('[data-provide=toggle]').each((index, element) => {
+    let $this = $(element);
+
+    $this.bootstrapToggle();
+  })
+
+})();
+
 
