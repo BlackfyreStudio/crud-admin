@@ -19,12 +19,10 @@
     "bootstrap-toggle": "^2.2.2",
     "smoothstate": "^0.7.2",
     "jquery-aim": "https://github.com/cihadturhan/jquery-aim.git#^0.0.1",
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "PACE": "pace#^1.0.2"
   },
   "overrides": {
-    "jquery": {
-      "main": []
-    },
     "bootstrap-sass": {
       "main": [
         "assets/stylesheets/_bootstrap.scss",
@@ -100,6 +98,29 @@
       "main": [
         "css/bootstrap-toggle.css",
         "js/bootstrap-toggle.js"
+      ]
+    },
+    "jquery-aim": {
+      "dependencies": {
+        "jquery": "~2.1.4"
+      },
+      "main": [
+        "jquery.aim.js"
+      ]
+    },
+    "smoothstate": {
+      "dependencies": {
+        "jquery": "~2.1.4",
+        "jquery-aim": "^0.0.1"
+      },
+      "main": [
+        "src/jquery.smoothState.js"
+      ]
+    },
+    "PACE": {
+      "main": [
+        "pace.js",
+        "themes/red/pace-theme-corner-indicator.css"
       ]
     }
   },

@@ -275,6 +275,12 @@ let initPluginsOn = ($container) => {
   })();
 };
 
+Pace.options = {
+  ajax: false,
+  document: false,
+  eventLag: false
+};
+
 
 (function ($) {
   'use strict';
@@ -308,6 +314,8 @@ let initPluginsOn = ($container) => {
     onStart : {
       duration: 250,
       render: () => {
+        Pace.start();
+
         $content.addClass('is-exiting');
         // Scroll user to the top
         $body.animate({ 'scrollTop': 0 });
@@ -322,6 +330,9 @@ let initPluginsOn = ($container) => {
 
         $container.html($newContent);
       }
+    },
+    onAfter: ($container, $newContent) => {
+      Pace.stop();
     },
     prefetchOn: 'aim'
   }).data('smoothState');
