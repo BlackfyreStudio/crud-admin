@@ -33,6 +33,8 @@
 </head>
 <body>
 
+<div class="scene" id="content">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -87,12 +89,10 @@
   </div>
 </div>
 
-
-
 <div class="container">
 
 
-  <div class="row">
+  <div class="row sceneElement" data-transition="moveleft">
     <div class="col-sm-8 col-sm-offset-2">
 
       <div class="panel panel-danger">
@@ -110,7 +110,7 @@
 
       </div>
 
-      <form class="form-horizontal"> <!-- Form -->
+      <form class="form-horizontal" novalidate> <!-- Form -->
 
       <div class="panel panel-default"> <!-- Panel -->
           <div class="panel-heading">
@@ -195,7 +195,7 @@
 
           </div>
           <div class="panel-footer">
-            <button type="submit" class="btn btn-success">Create / Update</button>
+            <button type="submit" data-inprogress-text="<i class='fa fa-spinner fa-spin '></i> " class="btn btn-success">Create / update</button>
           </div>
       </div> <!-- /Panel -->
 
@@ -205,7 +205,7 @@
   </div>
 
 
-  <form class="form-horizontal">
+  <form class="form-horizontal sceneElement" data-transition="moveleft" novalidate>
   <div class="panel panel-default"> <!-- Panel -->
     <div class="panel-heading">
       <h3 class="panel-title">Model new/edit</h3>
@@ -302,12 +302,10 @@
 
     </div>
     <div class="panel-footer">
-      <button type="submit" class="btn btn-success">Create / Update</button>
+      <button type="submit" data-inprogress-text="<i class='fa fa-spinner fa-spin '></i> " class="btn btn-success">Create / update</button>
     </div>
   </div>
   </form>
-
-
 
 
 </div>
@@ -318,9 +316,16 @@
   </div>
 </footer>
 
+</div>
+
+<!-- build:js scripts/transition.js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/jquery-aim/jquery.aim.js"></script>
+<script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
+<!-- endbuild -->
+
 <!-- build:js scripts/package.js -->
 <!-- bower:js -->
-<script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/moment/moment.js"></script>
 <script src="/bower_components/moment-timezone/builds/moment-timezone-with-data.js"></script>
 <script src="/bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
@@ -333,6 +338,7 @@
 <script src="/bower_components/select2/dist/js/select2.full.js"></script>
 <script src="/bower_components/magnific-popup/dist/jquery.magnific-popup.js"></script>
 <script src="/bower_components/bootstrap-toggle/js/bootstrap-toggle.js"></script>
+<script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
 <!-- endbower -->
 
 <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>

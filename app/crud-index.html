@@ -22,6 +22,8 @@
 </head>
 <body>
 
+<div class="scene" id="content">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -66,15 +68,19 @@
   </div>
 </nav>
 
+<div class="container-fluid breadcrumb-container">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="#"><i class="fa fa-fw fa-database"></i> Model name</a></li>
+      <li class="active"><i class="fa fa-fw fa-table"></i> Index</li>
+    </ol>
+  </div>
+</div>
+
 <div class="container">
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="#"><i class="fa fa-fw fa-database"></i> Model name</a></li>
-    <li class="active"><i class="fa fa-fw fa-table"></i> Index</li>
-  </ol>
 
-
-  <div class="row">
+  <div class="row sceneElement" data-transition="moveleft">
     <div class="col-sm-9">
 
       <div class="row index-title">
@@ -262,9 +268,16 @@
   </div>
 </footer>
 
+</div>
+
+<!-- build:js scripts/transition.js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/jquery-aim/jquery.aim.js"></script>
+<script src="/bower_components/smoothstate/src/jquery.smoothState.js"></script>
+<!-- endbuild -->
+
 <!-- build:js scripts/package.js -->
 <!-- bower:js -->
-<script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/moment/moment.js"></script>
 <script src="/bower_components/moment-timezone/builds/moment-timezone-with-data.js"></script>
 <script src="/bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>

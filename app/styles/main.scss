@@ -34,9 +34,12 @@ $footer-height: 40px;
 @import "bower_components/magnific-popup/src/css/main.scss";
 // endbower
 
+@import "partials/animations";
+
 html {
   position: relative;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 .browserupgrade {
@@ -57,7 +60,7 @@ body {
     margin-right: 10px;
   }
 
-  > .footer {
+  footer.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
