@@ -275,6 +275,7 @@ let initPluginsOn = ($container) => {
   })();
 };
 
+/*
 Pace.options = {
   ajax: false,
   document: false,
@@ -334,12 +335,15 @@ Pace.options = {
     onAfter: ($container, $newContent) => {
       Pace.stop();
     },
-    prefetchOn: 'aim'
+    prefetchOn: 'aim',
+    allowFormCaching: false,
+    forms: '.dontTrackForms'
   }).data('smoothState');
 
   initPluginsOn($body);
 
 })(jQuery);
 
+*/
 
-
+initPluginsOn($('html'));
